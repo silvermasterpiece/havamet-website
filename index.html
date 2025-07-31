@@ -5,6 +5,38 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>HAVAMET | Havacılık Meteorolojisi Derneği</title>
   <link rel="stylesheet" href="style.css" />
+  <style>
+    /* Geçici mobil destek için responsive iyileştirmeler */
+    @media (max-width: 768px) {
+      nav ul.menu {
+        flex-direction: column;
+        align-items: center;
+      }
+      nav li {
+        margin: 0;
+        width: 100%;
+        text-align: center;
+      }
+      .main-container {
+        flex-direction: column;
+        padding: 0.5rem;
+      }
+      .content-left, .content-right {
+        flex: unset;
+        width: 100%;
+        padding: 0.5rem;
+      }
+      .kapak-icerik {
+        flex-direction: column;
+        align-items: flex-start;
+        top: 10px;
+        left: 10px;
+      }
+      .kapak-icerik .logo {
+        width: 200px;
+      }
+    }
+  </style>
 </head>
 <body>
   <header class="kapak">
@@ -46,8 +78,8 @@
       <section class="duyurular">
         <h3>Duyurular</h3>
         <ul>
-          <li>📌 Dernek kuruluş süreci devam ediyor...</li>
-          <li>📅 İlk Genel Kurul Toplantısı planlanıyor.</li>
+          <li>📌 Dernek kurulup resmiyet kazanma süreci devam ediyor...</li>
+          <li>🗓️ İlk Genel Kurul Toplantısı planlanıyor.</li>
         </ul>
       </section>
     </div>
