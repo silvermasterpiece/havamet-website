@@ -38,6 +38,7 @@ nav ul.menu {
   background: #f6c844;
   padding: 0;
   margin: 0;
+  flex-wrap: wrap;
 }
 nav li {
   margin: 0 15px;
@@ -89,19 +90,16 @@ nav ul.dropdown-menu li a:hover {
   flex-wrap: wrap;
   padding: 1rem;
 }
-
 .content-left {
   flex: 2;
   padding: 1rem;
 }
-
 .content-right {
   flex: 1;
   padding: 1rem;
   background: #fff;
   border-left: 1px solid #ccc;
 }
-
 .hero {
   background: #00bfff;
   color: white;
@@ -109,7 +107,6 @@ nav ul.dropdown-menu li a:hover {
   text-align: center;
   border-radius: 8px;
 }
-
 .duyurular {
   padding: 1.5rem 0;
 }
@@ -175,4 +172,66 @@ footer {
   padding: 1rem;
   background: #1c2c48;
   color: white;
+}
+
+/* MOBİL UYUMLULUK */
+@media screen and (max-width: 768px) {
+  .kapak-icerik {
+    flex-direction: column;
+    align-items: flex-start;
+    top: 10px;
+    left: 10px;
+    gap: 10px;
+  }
+
+  .kapak-icerik .logo {
+    width: 200px;
+  }
+
+  nav ul.menu {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  nav li {
+    width: 100%;
+    margin: 0;
+  }
+
+  nav a {
+    width: 100%;
+    padding: 1rem;
+    border-top: 1px solid #ddd;
+  }
+
+  nav ul.dropdown-menu {
+    position: relative;
+    box-shadow: none;
+    border: none;
+    width: 100%;
+  }
+
+  nav li.dropdown:hover .dropdown-menu {
+    display: block;
+  }
+
+  .main-container {
+    flex-direction: column;
+    padding: 0.5rem;
+  }
+
+  .content-left,
+  .content-right {
+    flex: 1 1 100%;
+    padding: 0.5rem;
+  }
+
+  .hero {
+    font-size: 1rem;
+    padding: 1rem;
+  }
+
+  .galeri-tarih {
+    font-size: 0.75rem;
+  }
 }
