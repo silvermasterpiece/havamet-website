@@ -4,17 +4,34 @@ body {
   background: #f2f4f8;
   color: #1c2c48;
 }
-header {
-  background: #1c2c48;
+
+/* KAPAK */
+.kapak {
+  position: relative;
+  overflow: hidden;
+}
+.kapak-gorsel {
+  width: 100%;
+  max-height: 380px;
+  object-fit: cover;
+  display: block;
+}
+.kapak-icerik {
+  position: absolute;
+  top: 15px;
+  left: 30px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
   color: white;
-  text-align: center;
-  padding: 1rem;
 }
-.logo {
-  max-height: 80px;
-  margin-bottom: 10px;
+.kapak-icerik .logo {
+  width: 300px;
+  height: auto;
 }
-nav ul {
+
+/* MENÜ */
+nav ul.menu {
   list-style: none;
   display: flex;
   justify-content: center;
@@ -24,6 +41,7 @@ nav ul {
 }
 nav li {
   margin: 0 15px;
+  position: relative;
 }
 nav a {
   text-decoration: none;
@@ -35,15 +53,123 @@ nav a {
 nav a:hover {
   background: #ffe082;
 }
+
+/* DROPDOWN */
+nav li.dropdown:hover .dropdown-menu {
+  display: block;
+}
+nav ul.dropdown-menu {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background: #ffffff;
+  min-width: 220px;
+  border: 1px solid #ccc;
+  z-index: 999;
+  padding: 0;
+  margin: 0;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+nav ul.dropdown-menu li a {
+  padding: 10px 15px;
+  display: block;
+  font-weight: normal;
+  color: #1c2c48;
+  background-color: #fff;
+  white-space: nowrap;
+}
+nav ul.dropdown-menu li a:hover {
+  background-color: #ffe082;
+}
+
+/* ANA GÖVDE */
+.main-container {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 1rem;
+}
+
+.content-left {
+  flex: 2;
+  padding: 1rem;
+}
+
+.content-right {
+  flex: 1;
+  padding: 1rem;
+  background: #fff;
+  border-left: 1px solid #ccc;
+}
+
 .hero {
   background: #00bfff;
   color: white;
-  padding: 3rem 1rem;
-  text-align: center;
-}
-.duyurular {
   padding: 2rem;
+  text-align: center;
+  border-radius: 8px;
 }
+
+.duyurular {
+  padding: 1.5rem 0;
+}
+.duyurular ul {
+  padding-left: 1.2rem;
+}
+
+/* BASINDA BİZ */
+.basinda-biz img {
+  width: 100%;
+  border-radius: 6px;
+  margin-bottom: 0.5rem;
+}
+.basinda-biz a {
+  display: inline-block;
+  margin-top: 0.5rem;
+  color: #007bff;
+  text-decoration: none;
+}
+.basinda-biz a:hover {
+  text-decoration: underline;
+}
+
+/* TAKVİM */
+.takvim {
+  margin-top: 2rem;
+}
+
+/* GALERİ */
+.galeri {
+  margin-top: 2rem;
+}
+.galeri-kutu {
+  position: relative;
+}
+.galeri-kutu img {
+  width: 100%;
+  border-radius: 6px;
+}
+.galeri-tarih {
+  position: absolute;
+  bottom: 8px;
+  left: 8px;
+  background: rgba(0, 0, 0, 0.7);
+  color: white;
+  padding: 4px 8px;
+  font-size: 0.9rem;
+  border-radius: 4px;
+}
+.tum-galeriler {
+  display: inline-block;
+  margin-top: 0.5rem;
+  color: #d00;
+  text-decoration: none;
+}
+.tum-galeriler:hover {
+  text-decoration: underline;
+}
+
+/* FOOTER */
 footer {
   text-align: center;
   padding: 1rem;
