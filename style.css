@@ -23,7 +23,6 @@ body {
   display: flex;
   align-items: center;
   gap: 20px;
-  color: white;
 }
 .kapak-icerik .logo {
   width: 300px;
@@ -31,57 +30,93 @@ body {
 }
 
 /* MENÜ */
-nav ul.menu {
-  list-style: none;
-  display: flex;
-  justify-content: center;
+nav {
   background: #f6c844;
-  padding: 0;
-  margin: 0;
-  flex-wrap: wrap;
 }
-nav li {
-  margin: 0 15px;
+.menu-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 15px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   position: relative;
 }
-nav a {
+.menu-toggle {
+  display: none;
+  background: none;
+  border: none;
+  font-size: 30px;
+  cursor: pointer;
+  color: #1c2c48;
+  padding: 1rem;
+}
+ul.menu {
+  list-style: none;
+  display: flex;
+  margin: 0;
+  padding: 0;
+}
+ul.menu li {
+  position: relative;
+}
+ul.menu li a {
   text-decoration: none;
   color: #1c2c48;
   font-weight: bold;
   padding: 1rem;
-  display: inline-block;
+  display: block;
 }
-nav a:hover {
+ul.menu li a:hover {
   background: #ffe082;
 }
 
 /* DROPDOWN */
-nav li.dropdown:hover .dropdown-menu {
+.dropdown:hover .dropdown-menu {
   display: block;
 }
-nav ul.dropdown-menu {
+.dropdown-menu {
   display: none;
   position: absolute;
   top: 100%;
   left: 0;
-  background: #ffffff;
-  min-width: 220px;
+  background: #fff;
   border: 1px solid #ccc;
-  z-index: 999;
-  padding: 0;
-  margin: 0;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  z-index: 1000;
+  min-width: 200px;
 }
-nav ul.dropdown-menu li a {
+.dropdown-menu li a {
   padding: 10px 15px;
-  display: block;
   font-weight: normal;
   color: #1c2c48;
-  background-color: #fff;
-  white-space: nowrap;
 }
-nav ul.dropdown-menu li a:hover {
-  background-color: #ffe082;
+.dropdown-menu li a:hover {
+  background: #ffe082;
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  .menu-toggle {
+    display: block;
+  }
+  ul.menu {
+    flex-direction: column;
+    display: none;
+    width: 100%;
+    background-color: #f6c844;
+  }
+  ul.menu.show {
+    display: flex;
+  }
+  ul.menu li {
+    text-align: left;
+    border-bottom: 1px solid #fff2c1;
+  }
+  .dropdown-menu {
+    position: static;
+    border: none;
+    box-shadow: none;
+  }
 }
 
 /* ANA GÖVDE */
@@ -172,66 +207,4 @@ footer {
   padding: 1rem;
   background: #1c2c48;
   color: white;
-}
-
-/* MOBİL UYUMLULUK */
-@media screen and (max-width: 768px) {
-  .kapak-icerik {
-    flex-direction: column;
-    align-items: flex-start;
-    top: 10px;
-    left: 10px;
-    gap: 10px;
-  }
-
-  .kapak-icerik .logo {
-    width: 200px;
-  }
-
-  nav ul.menu {
-    flex-direction: column;
-    align-items: stretch;
-  }
-
-  nav li {
-    width: 100%;
-    margin: 0;
-  }
-
-  nav a {
-    width: 100%;
-    padding: 1rem;
-    border-top: 1px solid #ddd;
-  }
-
-  nav ul.dropdown-menu {
-    position: relative;
-    box-shadow: none;
-    border: none;
-    width: 100%;
-  }
-
-  nav li.dropdown:hover .dropdown-menu {
-    display: block;
-  }
-
-  .main-container {
-    flex-direction: column;
-    padding: 0.5rem;
-  }
-
-  .content-left,
-  .content-right {
-    flex: 1 1 100%;
-    padding: 0.5rem;
-  }
-
-  .hero {
-    font-size: 1rem;
-    padding: 1rem;
-  }
-
-  .galeri-tarih {
-    font-size: 0.75rem;
-  }
 }
