@@ -1,3 +1,4 @@
+/* GENEL STİL */
 body {
   margin: 0;
   font-family: Arial, sans-serif;
@@ -9,24 +10,21 @@ body {
   background: #1c1c1c;
   color: #f2f2f2;
 }
-
 .dark-mode nav ul.menu {
   background: #333;
 }
-
 .dark-mode nav a {
   color: #f2f2f2;
 }
-
 .dark-mode nav a:hover {
   background: #444;
 }
-
 .dark-mode .content-right {
   background: #2b2b2b;
   border-color: #555;
 }
 
+/* KAPAK */
 .kapak {
   position: relative;
   overflow: hidden;
@@ -51,6 +49,23 @@ body {
   height: auto;
 }
 
+/* NAVBAR */
+nav {
+  position: relative;
+  z-index: 10;
+}
+.menu-toggle {
+  display: none;
+  font-size: 30px;
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background: none;
+  border: none;
+  color: white;
+  z-index: 1000;
+  cursor: pointer;
+}
 nav ul.menu {
   list-style: none;
   display: flex;
@@ -58,6 +73,7 @@ nav ul.menu {
   background: #f6c844;
   padding: 0;
   margin: 0;
+  flex-wrap: wrap;
 }
 nav li {
   margin: 0 15px;
@@ -73,7 +89,6 @@ nav a {
 nav a:hover {
   background: #ffe082;
 }
-
 nav li.dropdown:hover .dropdown-menu {
   display: block;
 }
@@ -102,6 +117,32 @@ nav ul.dropdown-menu li a:hover {
   background-color: #ffe082;
 }
 
+/* RESPONSIVE NAV */
+@media (max-width: 768px) {
+  .menu-toggle {
+    display: block;
+  }
+  nav ul.menu {
+    display: none;
+    flex-direction: column;
+    background-color: #f6c844;
+    padding: 10px;
+  }
+  nav ul.menu.active {
+    display: flex;
+  }
+  nav li {
+    margin: 10px 0;
+    text-align: center;
+  }
+  nav ul.dropdown-menu {
+    position: static;
+    box-shadow: none;
+    border: none;
+  }
+}
+
+/* İÇERİK ALANI */
 .main-container {
   display: flex;
   flex-wrap: wrap;
@@ -117,6 +158,8 @@ nav ul.dropdown-menu li a:hover {
   background: #fff;
   border-left: 1px solid #ccc;
 }
+
+/* HERO */
 .hero {
   background: #00bfff;
   color: white;
@@ -124,12 +167,16 @@ nav ul.dropdown-menu li a:hover {
   text-align: center;
   border-radius: 8px;
 }
+
+/* DUYURULAR */
 .duyurular {
   padding: 1.5rem 0;
 }
 .duyurular ul {
   padding-left: 1.2rem;
 }
+
+/* MEDYA */
 .basinda-biz img {
   width: 100%;
   border-radius: 6px;
@@ -144,9 +191,13 @@ nav ul.dropdown-menu li a:hover {
 .basinda-biz a:hover {
   text-decoration: underline;
 }
+
+/* TAKVİM */
 .takvim {
   margin-top: 2rem;
 }
+
+/* GALERİ */
 .galeri {
   margin-top: 2rem;
 }
@@ -176,6 +227,8 @@ nav ul.dropdown-menu li a:hover {
 .tum-galeriler:hover {
   text-decoration: underline;
 }
+
+/* FOOTER */
 footer {
   text-align: center;
   padding: 1rem;
@@ -183,40 +236,44 @@ footer {
   color: white;
 }
 
-/* Dil ve Tema Butonları */
+/* DİL & MOD BUTONLARI */
 .lang-switcher,
 .mode-toggle {
   position: absolute;
   top: 10px;
   z-index: 999;
 }
-
 .mode-toggle {
   left: 10px;
 }
-
 .lang-switcher {
   right: 10px;
 }
-
 .lang-switcher button,
 .mode-toggle button {
   background: none;
   border: none;
   cursor: pointer;
   padding: 8px;
-  font-size: 26px; /* Buton içeriğini büyütür */
+  font-size: 26px;
   width: 44px;
   height: 44px;
   border-radius: 50%;
   transition: background 0.3s;
 }
-
 .mode-toggle button:hover {
-  background: rgba(255, 255, 255, 0.2); /* Hover efekti isteğe bağlı */
+  background: rgba(255, 255, 255, 0.2);
 }
-
-
 .lang-switcher img {
   vertical-align: middle;
+}
+
+/* RESPONSIVE YAPI */
+@media screen and (max-width: 768px) {
+  .main-container {
+    flex-direction: column;
+  }
+  .content-left, .content-right {
+    flex: 1 1 100%;
+  }
 }
