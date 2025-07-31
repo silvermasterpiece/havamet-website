@@ -7,12 +7,12 @@
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <!-- Gece/Gündüz Modu Butonu (Sol üstte) -->
+  <!-- Gece/Gündüz Modu Butonu -->
   <div class="mode-toggle">
     <button id="modeButton" onclick="toggleMode()" title="Tema Değiştir">🌙</button>
   </div>
 
-  <!-- Dil Seçimi Butonları (Sağ üstte) -->
+  <!-- Dil Seçimi Butonları -->
   <div class="lang-switcher">
     <button onclick="setLanguage('tr')" title="Türkçe">
       <img src="assets/flags/tr.png" alt="TR" width="24" />
@@ -22,35 +22,37 @@
     </button>
   </div>
 
+  <!-- Kapak ve Logo -->
   <header class="kapak">
     <img src="assets/images/kapak.png" alt="Kapak Görseli" class="kapak-gorsel" />
     <div class="kapak-icerik">
       <img src="assets/images/logo.png" alt="HAVAMET Logo" class="logo" />
     </div>
+    <button class="menu-toggle" id="menu-toggle">☰</button>
+    <nav>
+      <ul class="menu" id="menu">
+        <li><a href="#" data-tr="Anasayfa" data-en="Home"></a></li>
+        <li class="dropdown">
+          <a href="#" data-tr="Derneğimiz" data-en="Our Association"></a>
+          <ul class="dropdown-menu">
+            <li><a href="#" data-tr="Tarihçe" data-en="History"></a></li>
+            <li><a href="#" data-tr="Misyon & Vizyon" data-en="Mission & Vision"></a></li>
+            <li><a href="#" data-tr="Yönetim ve Organizasyon Şeması" data-en="Management and Organization Chart"></a></li>
+            <li><a href="#" data-tr="Tüzük" data-en="Regulation"></a></li>
+            <li><a href="#" data-tr="Faaliyet Raporları" data-en="Activity Reports"></a></li>
+            <li><a href="#" data-tr="Şubelerimiz" data-en="Our Branches"></a></li>
+            <li><a href="#" data-tr="Çalışma Grupları" data-en="Working Groups"></a></li>
+          </ul>
+        </li>
+        <li><a href="#" data-tr="Haberler" data-en="News"></a></li>
+        <li><a href="#" data-tr="Galeri" data-en="Gallery"></a></li>
+        <li><a href="#" data-tr="Linkler" data-en="Links"></a></li>
+        <li><a href="#" data-tr="İletişim" data-en="Contact"></a></li>
+      </ul>
+    </nav>
   </header>
 
-  <nav>
-    <ul class="menu">
-      <li><a href="#" data-tr="Anasayfa" data-en="Home"></a></li>
-      <li class="dropdown">
-        <a href="#" data-tr="Derneğimiz" data-en="Our Association"></a>
-        <ul class="dropdown-menu">
-          <li><a href="#" data-tr="Tarihçe" data-en="History"></a></li>
-          <li><a href="#" data-tr="Misyon & Vizyon" data-en="Mission & Vision"></a></li>
-          <li><a href="#" data-tr="Yönetim ve Organizasyon Şeması" data-en="Management and Organization Chart"></a></li>
-          <li><a href="#" data-tr="Tüzük" data-en="Regulation"></a></li>
-          <li><a href="#" data-tr="Faaliyet Raporları" data-en="Activity Reports"></a></li>
-          <li><a href="#" data-tr="Şubelerimiz" data-en="Our Branches"></a></li>
-          <li><a href="#" data-tr="Çalışma Grupları" data-en="Working Groups"></a></li>
-        </ul>
-      </li>
-      <li><a href="#" data-tr="Haberler" data-en="News"></a></li>
-      <li><a href="#" data-tr="Galeri" data-en="Gallery"></a></li>
-      <li><a href="#" data-tr="Linkler" data-en="Links"></a></li>
-      <li><a href="#" data-tr="İletişim" data-en="Contact"></a></li>
-    </ul>
-  </nav>
-
+  <!-- Ana İçerik -->
   <main class="main-container">
     <div class="content-left">
       <section class="hero">
@@ -108,14 +110,6 @@
       });
       localStorage.setItem('lang', lang);
     }
-    window.onload = () => {
-      const lang = localStorage.getItem('lang') || 'tr';
-      setLanguage(lang);
-
-      const theme = localStorage.getItem('theme');
-      if (theme === 'dark') document.body.classList.add('dark-mode');
-      updateModeIcon();
-    };
 
     // Tema değiştirme
     function toggleMode() {
@@ -129,6 +123,23 @@
       const btn = document.getElementById('modeButton');
       btn.textContent = document.body.classList.contains('dark-mode') ? '☀️' : '🌙';
     }
+
+    // Sayfa açıldığında
+    window.onload = () => {
+      const lang = localStorage.getItem('lang') || 'tr';
+      setLanguage(lang);
+
+      const theme = localStorage.getItem('theme');
+      if (theme === 'dark') document.body.classList.add('dark-mode');
+      updateModeIcon();
+    };
+
+    // Hamburger menü
+    const toggleButton = document.getElementById('menu-toggle');
+    const menu = document.getElementById('menu');
+    toggleButton.addEventListener('click', () => {
+      menu.classList.toggle('active');
+    });
   </script>
 </body>
 </html>
