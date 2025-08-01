@@ -89,8 +89,10 @@ nav a {
 nav a:hover {
   background: #ffe082;
 }
-nav li.dropdown:hover .dropdown-menu {
-  display: block;
+
+/* DROPDOWN */
+nav li.dropdown {
+  position: relative;
 }
 nav ul.dropdown-menu {
   display: none;
@@ -104,6 +106,9 @@ nav ul.dropdown-menu {
   padding: 0;
   margin: 0;
   box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+nav ul.dropdown-menu.active {
+  display: block;
 }
 nav ul.dropdown-menu li a {
   padding: 10px 15px;
@@ -122,23 +127,29 @@ nav ul.dropdown-menu li a:hover {
   .menu-toggle {
     display: block;
   }
+
   nav ul.menu {
     display: none;
     flex-direction: column;
     background-color: #f6c844;
     padding: 10px;
+    margin-top: 60px;
   }
+
   nav ul.menu.active {
     display: flex;
   }
+
   nav li {
     margin: 10px 0;
     text-align: center;
   }
+
   nav ul.dropdown-menu {
     position: static;
     box-shadow: none;
     border: none;
+    width: 100%;
   }
 }
 
@@ -239,7 +250,7 @@ footer {
 /* DİL & MOD BUTONLARI */
 .lang-switcher,
 .mode-toggle {
-  position: absolute;
+  position: fixed;
   top: 10px;
   z-index: 999;
 }
@@ -248,6 +259,8 @@ footer {
 }
 .lang-switcher {
   right: 10px;
+  display: flex;
+  gap: 6px;
 }
 .lang-switcher button,
 .mode-toggle button {
@@ -255,25 +268,48 @@ footer {
   border: none;
   cursor: pointer;
   padding: 8px;
-  font-size: 26px;
+  font-size: 22px;
   width: 44px;
   height: 44px;
   border-radius: 50%;
   transition: background 0.3s;
 }
-.mode-toggle button:hover {
+.mode-toggle button:hover,
+.lang-switcher button:hover {
   background: rgba(255, 255, 255, 0.2);
 }
 .lang-switcher img {
   vertical-align: middle;
+  width: 24px;
+  height: 24px;
 }
 
 /* RESPONSIVE YAPI */
 @media screen and (max-width: 768px) {
   .main-container {
     flex-direction: column;
+    padding: 0.5rem;
   }
+
   .content-left, .content-right {
     flex: 1 1 100%;
+    padding: 0.5rem;
+  }
+
+  .kapak-icerik {
+    top: 10px;
+    left: 10px;
+    flex-direction: column;
+    gap: 10px;
+    text-align: center;
+  }
+
+  .kapak-icerik .logo {
+    width: 150px;
+  }
+
+  .menu-toggle {
+    top: 10px;
+    right: 10px;
   }
 }
