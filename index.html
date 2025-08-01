@@ -7,18 +7,17 @@
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <!-- Gece/Gündüz Modu Butonu -->
+  <!-- Tema ve Dil Butonları -->
   <div class="mode-toggle">
     <button id="modeButton" onclick="toggleMode()" title="Tema Değiştir">🌙</button>
   </div>
 
-  <!-- Dil Seçimi Butonları -->
   <div class="lang-switcher">
     <button onclick="setLanguage('tr')" title="Türkçe">
-      <img src="assets/flags/tr.png" alt="TR" width="24" />
+      <img src="assets/flags/tr.png" alt="TR" />
     </button>
     <button onclick="setLanguage('en')" title="English">
-      <img src="assets/flags/gb.png" alt="EN" width="24" />
+      <img src="assets/flags/gb.png" alt="EN" />
     </button>
   </div>
 
@@ -31,77 +30,77 @@
     <button class="menu-toggle" id="menu-toggle">☰</button>
     <nav>
       <ul class="menu" id="menu">
-        <li><a href="#" data-tr="Anasayfa" data-en="Home"></a></li>
+        <li><a href="index.html">Anasayfa</a></li>
         <li class="dropdown">
-          <a href="#" data-tr="Derneğimiz" data-en="Our Association"></a>
+          <a href="#" class="dropdown-toggle" onclick="toggleDropdown(event)">Derneğimiz ▾</a>
           <ul class="dropdown-menu">
-            <li><a href="#" data-tr="Tarihçe" data-en="History"></a></li>
-            <li><a href="#" data-tr="Misyon & Vizyon" data-en="Mission & Vision"></a></li>
-            <li><a href="#" data-tr="Yönetim ve Organizasyon Şeması" data-en="Management and Organization Chart"></a></li>
-            <li><a href="#" data-tr="Tüzük" data-en="Regulation"></a></li>
-            <li><a href="#" data-tr="Faaliyet Raporları" data-en="Activity Reports"></a></li>
-            <li><a href="#" data-tr="Şubelerimiz" data-en="Our Branches"></a></li>
-            <li><a href="#" data-tr="Çalışma Grupları" data-en="Working Groups"></a></li>
+            <li><a href="misyon-vizyon.html">Misyon & Vizyon</a></li>
+            <li><a href="yonetim.html">Yönetim ve Organizasyon Şeması</a></li>
+            <li><a href="tuzuk.html">Tüzük</a></li>
+            <li><a href="faaliyet.html">Faaliyet Raporları</a></li>
+            <li><a href="subeler.html">Şubelerimiz</a></li>
+            <li><a href="gruplar.html">Çalışma Grupları</a></li>
           </ul>
         </li>
-        <li><a href="#" data-tr="Haberler" data-en="News"></a></li>
-        <li><a href="#" data-tr="Galeri" data-en="Gallery"></a></li>
-        <li><a href="#" data-tr="Linkler" data-en="Links"></a></li>
-        <li><a href="#" data-tr="İletişim" data-en="Contact"></a></li>
+        <li><a href="#">Haberler</a></li>
+        <li><a href="#">Galeri</a></li>
+        <li><a href="#">Linkler</a></li>
+        <li><a href="#">İletişim</a></li>
       </ul>
     </nav>
   </header>
 
-  <!-- Ana İçerik -->
+  <!-- İçerik -->
   <main class="main-container">
     <div class="content-left">
       <section class="hero">
-        <h2 data-tr="HAVAMET'e Hoş Geldiniz" data-en="Welcome to HAVAMET"></h2>
-        <p data-tr="Meteoroloji çalışanlarını bir çatı altında topluyoruz." data-en="Uniting meteorology professionals under one roof."></p>
+        <h2>HAVAMET'e Hoş Geldiniz</h2>
+        <p>Meteoroloji çalışanlarını bir çatı altında topluyoruz.</p>
       </section>
 
       <section class="duyurular">
-        <h3 data-tr="Duyurular" data-en="Announcements"></h3>
+        <h3>Duyurular</h3>
         <ul>
-          <li data-tr="📌 Dernek kuruluş süreci devam ediyor..." data-en="📌 The association establishment process continues..."></li>
-          <li data-tr="📅 İlk Genel Kurul Toplantısı planlanıyor." data-en="📅 The first General Assembly Meeting is being planned."></li>
+          <li>📌 Dernek kuruluş süreci devam ediyor...</li>
+          <li>📅 İlk Genel Kurul Toplantısı planlanıyor.</li>
         </ul>
       </section>
     </div>
 
     <aside class="content-right">
       <section class="basinda-biz">
-        <h3 data-tr="Basında Biz" data-en="In The Media"></h3>
+        <h3>Basında Biz</h3>
         <a href="https://www.memurlar.net/haber/1142050/" target="_blank">
           <img src="assets/images/basinda.png" alt="Basında Biz" />
         </a>
-        <p data-tr="Meteoroloji çalışanları eşit tazminat istiyor: Aynı göklerdeyiz, ama ücretlerimiz yerde kaldı" data-en="Meteorology employees demand equal compensation: We fly the same skies, but our salaries are grounded."></p>
-        <a href="#" data-tr="Tüm Haberler" data-en="All News"></a>
+        <p>Meteoroloji çalışanları eşit tazminat istiyor: Aynı göklerdeyiz, ama ücretlerimiz yerde kaldı</p>
+        <a href="#">Tüm Haberler</a>
       </section>
 
       <section class="takvim">
-        <h3 data-tr="Etkinliklerimiz" data-en="Our Events"></h3>
+        <h3>Etkinliklerimiz</h3>
         <iframe src="https://calendar.google.com/calendar/embed?src=tr.turkish%23holiday%40group.v.calendar.google.com&ctz=Europe%2FIstanbul"
           style="border:0" width="100%" height="200" frameborder="0" scrolling="no"></iframe>
       </section>
 
       <section class="galeri">
-        <h3 data-tr="GALERİ" data-en="GALLERY"></h3>
+        <h3>GALERİ</h3>
         <div class="galeri-kutu">
           <img src="assets/images/mgm.png" alt="Meteoroloji Genel Müdürlüğü" />
           <div class="galeri-tarih">Meteoroloji Genel Müdürlüğü</div>
         </div>
-        <a href="#" class="tum-galeriler" data-tr="Tüm Galeriler" data-en="All Galleries"></a>
+        <a href="#" class="tum-galeriler">Tüm Galeriler</a>
       </section>
     </aside>
   </main>
 
+  <!-- Alt Bilgi -->
   <footer>
     <p>&copy; 2025 HAVAMET - Tüm hakları saklıdır.</p>
   </footer>
 
+  <!-- Script -->
   <script>
-    // Dil değiştirme
     function setLanguage(lang) {
       const elements = document.querySelectorAll('[data-tr], [data-en]');
       elements.forEach(el => {
@@ -111,7 +110,6 @@
       localStorage.setItem('lang', lang);
     }
 
-    // Tema değiştirme
     function toggleMode() {
       document.body.classList.toggle('dark-mode');
       const isDark = document.body.classList.contains('dark-mode');
@@ -124,22 +122,47 @@
       btn.textContent = document.body.classList.contains('dark-mode') ? '☀️' : '🌙';
     }
 
-    // Sayfa açıldığında
-    window.onload = () => {
-      const lang = localStorage.getItem('lang') || 'tr';
-      setLanguage(lang);
-
-      const theme = localStorage.getItem('theme');
-      if (theme === 'dark') document.body.classList.add('dark-mode');
-      updateModeIcon();
-    };
-
-    // Hamburger menü
+    // Hamburger Menü
     const toggleButton = document.getElementById('menu-toggle');
     const menu = document.getElementById('menu');
     toggleButton.addEventListener('click', () => {
       menu.classList.toggle('active');
+      document.body.style.overflow = menu.classList.contains('active') ? 'hidden' : '';
     });
+
+    // Dropdown Menü
+    function toggleDropdown(event) {
+      event.preventDefault();
+
+      document.querySelectorAll('.dropdown-menu').forEach(menu => {
+        if (menu !== event.target.nextElementSibling) {
+          menu.classList.remove('active');
+        }
+      });
+
+      const parentLi = event.target.closest('li');
+      const dropdown = parentLi.querySelector('.dropdown-menu');
+      dropdown.classList.toggle('active');
+    }
+
+    // Sayfa dışında tıklanınca dropdown kapansın
+    document.addEventListener('click', function (event) {
+      const isDropdown = event.target.closest('.dropdown');
+      if (!isDropdown) {
+        document.querySelectorAll('.dropdown-menu.active').forEach(menu => {
+          menu.classList.remove('active');
+        });
+      }
+    });
+
+    // Yükleme sırasında dil ve tema ayarları
+    window.onload = () => {
+      const lang = localStorage.getItem('lang') || 'tr';
+      setLanguage(lang);
+      const theme = localStorage.getItem('theme');
+      if (theme === 'dark') document.body.classList.add('dark-mode');
+      updateModeIcon();
+    };
   </script>
 </body>
 </html>
