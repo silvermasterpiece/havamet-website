@@ -246,3 +246,25 @@ body.dark-mode .basinda-biz a {
 body.dark-mode .tum-galeriler {
   color: #ff6666;
 }
+
+/* Menü her zaman açık */
+#navMenu {
+  display: block !important;
+}
+
+/* Hamburger menü tamamen gizlensin */
+.hamburger {
+  display: none !important;
+}
+
+/* Eğer responsive davranış gerekiyorsa (mobilde yeniden tasarlanacaksa) buraya ayrıca yazabiliriz */
+@media (max-width: 768px) {
+  #navMenu {
+    display: block !important;
+  }
+
+  .hamburger {
+    display: none !important;
+  }
+}
+
