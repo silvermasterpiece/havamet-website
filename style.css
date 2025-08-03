@@ -1,4 +1,3 @@
-/* GENEL STİL */
 body {
   margin: 0;
   font-family: Arial, sans-serif;
@@ -6,22 +5,37 @@ body {
   color: #1c2c48;
 }
 
-.dark-mode {
-  background: #1c1c1c;
-  color: #f2f2f2;
+.top-bar {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  right: 10px;
+  display: flex;
+  justify-content: space-between;
+  z-index: 1000;
 }
-.dark-mode nav ul.menu {
-  background: #333;
+
+.hamburger {
+  font-size: 26px;
+  cursor: pointer;
 }
-.dark-mode nav a {
-  color: #f2f2f2;
+
+.right-controls {
+  display: flex;
+  align-items: center;
+  gap: 10px;
 }
-.dark-mode nav a:hover {
-  background: #444;
+
+.lang-switcher button,
+.mode-toggle button {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  font-size: 20px;
 }
-.dark-mode .content-right {
-  background: #2b2b2b;
-  border-color: #555;
+
+.lang-switcher img {
+  vertical-align: middle;
 }
 
 /* KAPAK */
@@ -49,31 +63,21 @@ body {
   height: auto;
 }
 
-/* NAVBAR */
+/* MENÜ */
 nav {
-  position: relative;
-  z-index: 10;
-}
-.menu-toggle {
   display: none;
-  font-size: 30px;
-  position: absolute;
-  top: 20px;
-  right: 20px;
-  background: none;
-  border: none;
-  color: white;
-  z-index: 1000;
-  cursor: pointer;
+}
+nav.show {
+  display: block;
 }
 nav ul.menu {
   list-style: none;
   display: flex;
+  flex-wrap: wrap;
   justify-content: center;
   background: #f6c844;
   padding: 0;
   margin: 0;
-  flex-wrap: wrap;
 }
 nav li {
   margin: 0 15px;
@@ -91,8 +95,8 @@ nav a:hover {
 }
 
 /* DROPDOWN */
-nav li.dropdown {
-  position: relative;
+nav li.dropdown:hover .dropdown-menu {
+  display: block;
 }
 nav ul.dropdown-menu {
   display: none;
@@ -107,9 +111,6 @@ nav ul.dropdown-menu {
   margin: 0;
   box-shadow: 0 2px 5px rgba(0,0,0,0.1);
 }
-nav ul.dropdown-menu.active {
-  display: block;
-}
 nav ul.dropdown-menu li a {
   padding: 10px 15px;
   display: block;
@@ -122,43 +123,13 @@ nav ul.dropdown-menu li a:hover {
   background-color: #ffe082;
 }
 
-/* RESPONSIVE NAV */
-@media (max-width: 768px) {
-  .menu-toggle {
-    display: block;
-  }
-
-  nav ul.menu {
-    display: none;
-    flex-direction: column;
-    background-color: #f6c844;
-    padding: 10px;
-    margin-top: 60px;
-  }
-
-  nav ul.menu.active {
-    display: flex;
-  }
-
-  nav li {
-    margin: 10px 0;
-    text-align: center;
-  }
-
-  nav ul.dropdown-menu {
-    position: static;
-    box-shadow: none;
-    border: none;
-    width: 100%;
-  }
-}
-
-/* İÇERİK ALANI */
+/* ANA GÖVDE */
 .main-container {
   display: flex;
   flex-wrap: wrap;
   padding: 1rem;
 }
+
 .content-left {
   flex: 2;
   padding: 1rem;
@@ -170,7 +141,6 @@ nav ul.dropdown-menu li a:hover {
   border-left: 1px solid #ccc;
 }
 
-/* HERO */
 .hero {
   background: #00bfff;
   color: white;
@@ -179,7 +149,6 @@ nav ul.dropdown-menu li a:hover {
   border-radius: 8px;
 }
 
-/* DUYURULAR */
 .duyurular {
   padding: 1.5rem 0;
 }
@@ -187,7 +156,7 @@ nav ul.dropdown-menu li a:hover {
   padding-left: 1.2rem;
 }
 
-/* MEDYA */
+/* BASINDA BİZ */
 .basinda-biz img {
   width: 100%;
   border-radius: 6px;
@@ -247,69 +216,33 @@ footer {
   color: white;
 }
 
-/* DİL & MOD BUTONLARI */
-.lang-switcher,
-.mode-toggle {
-  position: fixed;
-  top: 10px;
-  z-index: 999;
+/* DARK MODE */
+body.dark-mode {
+  background-color: #1a1a1a;
+  color: #f2f2f2;
 }
-.mode-toggle {
-  left: 10px;
+body.dark-mode nav,
+body.dark-mode nav ul.menu {
+  background-color: #333333;
 }
-.lang-switcher {
-  right: 10px;
-  display: flex;
-  gap: 6px;
+body.dark-mode nav a {
+  color: #f2f2f2;
 }
-.lang-switcher button,
-.mode-toggle button {
-  background: none;
-  border: none;
-  cursor: pointer;
-  padding: 8px;
-  font-size: 22px;
-  width: 44px;
-  height: 44px;
-  border-radius: 50%;
-  transition: background 0.3s;
+body.dark-mode nav a:hover,
+body.dark-mode nav ul.dropdown-menu li a:hover {
+  background-color: #444444;
 }
-.mode-toggle button:hover,
-.lang-switcher button:hover {
-  background: rgba(255, 255, 255, 0.2);
+body.dark-mode .content-right {
+  background: #2a2a2a;
+  border-left: 1px solid #444;
 }
-.lang-switcher img {
-  vertical-align: middle;
-  width: 24px;
-  height: 24px;
+body.dark-mode .hero {
+  background: #444;
+  color: #fff;
 }
-
-/* RESPONSIVE YAPI */
-@media screen and (max-width: 768px) {
-  .main-container {
-    flex-direction: column;
-    padding: 0.5rem;
-  }
-
-  .content-left, .content-right {
-    flex: 1 1 100%;
-    padding: 0.5rem;
-  }
-
-  .kapak-icerik {
-    top: 10px;
-    left: 10px;
-    flex-direction: column;
-    gap: 10px;
-    text-align: center;
-  }
-
-  .kapak-icerik .logo {
-    width: 150px;
-  }
-
-  .menu-toggle {
-    top: 10px;
-    right: 10px;
-  }
+body.dark-mode .basinda-biz a {
+  color: #89c4ff;
+}
+body.dark-mode .tum-galeriler {
+  color: #ff6666;
 }
