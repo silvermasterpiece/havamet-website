@@ -268,3 +268,84 @@ body.dark-mode .tum-galeriler {
   }
 }
 
+.lang-switcher img {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.lang-switcher {
+  display: flex;
+  gap: 8px;
+}
+
+.mode-toggle button {
+  font-size: 22px;
+}
+
+.lang-switcher button,
+.mode-toggle button {
+  padding: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hava-durumu-blok {
+  margin-bottom: 2rem;
+  padding: 1.5rem;
+  border-radius: 10px;
+  background: linear-gradient(to right, #2196f3, #6ec6ff);
+  color: white;
+  text-align: center;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+.hava-durumu-blok h3 {
+  margin-bottom: 1rem;
+  font-size: 1.4rem;
+}
+.hava-durumu-blok img {
+  vertical-align: middle;
+  width: 60px;
+  height: 60px;
+}
+#sicaklik {
+  font-size: 2rem;
+  margin: 0.5rem 0;
+}
+#aciklama {
+  font-size: 1rem;
+  font-style: italic;
+}
+
+.hava-durumu-gunduz {
+  background: linear-gradient(to right, #4facfe, #00f2fe);
+  color: #ffffff;
+}
+
+.hava-durumu-gece {
+  background: linear-gradient(to right, #2c3e50, #4ca1af);
+  color: #ffffff;
+}
+
+.hava-durumu-acik {
+  background: linear-gradient(to right, #fceabb, #f8b500);
+  color: #000;
+}
+
+.hava-durumu-bulutlu {
+  background: linear-gradient(to right, #bdc3c7, #2c3e50);
+  color: #fff;
+}
+
+.hava-durumu-yagmurlu {
+  background: linear-gradient(to right, #3a6073, #16222a);
+  color: #fff;
+}
+
+.hava-durumu-karlı {
+  background: linear-gradient(to right, #e6dada, #274046);
+  color: #000;
+}
+
