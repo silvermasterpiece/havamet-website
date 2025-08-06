@@ -18,6 +18,10 @@
 
   <!-- Styles -->
   <link rel="stylesheet" href="style.css" />
+  <style>
+    /* Mobilde JS ile açıldığında görünür olsun */
+    .dropdown.open .dropdown-menu { display: block; }
+  </style>
 </head>
 <body>
   <a class="sr-only" href="#icerik">İçeriğe atla</a>
@@ -57,9 +61,15 @@
       <button class="hamburger" id="hamburger" aria-expanded="false" aria-controls="menu" aria-label="Menüyü aç/kapat">☰</button>
       <ul class="menu" id="menu">
         <li><a href="index.html" data-tr="Anasayfa" data-en="Home" aria-current="page">Anasayfa</a></li>
+
+        <!-- DROPDOWN -->
         <li class="dropdown">
-          <a href="#" data-tr="Derneğimiz" data-en="Our Association" aria-haspopup="true" aria-expanded="false">Derneğimiz</a>
-          <div class="dropdown-menu" role="menu" aria-label="Derneğimiz alt menü">
+          <a href="#" class="dropdown-toggle"
+             data-tr="Derneğimiz" data-en="Our Association"
+             aria-haspopup="true" aria-expanded="false" aria-controls="submenu-dernegimiz">
+             Derneğimiz
+          </a>
+          <div class="dropdown-menu" id="submenu-dernegimiz" role="menu" aria-label="Derneğimiz alt menü">
             <a href="tarihce.html" data-tr="Tarihçe" data-en="History" role="menuitem">Tarihçe</a>
             <a href="misyon-vizyon.html" data-tr="Misyon & Vizyon" data-en="Mission & Vision" role="menuitem">Misyon & Vizyon</a>
             <a href="yonetim.html" data-tr="Yönetim ve Organizasyon Şeması" data-en="Management and Organization Chart" role="menuitem">Yönetim ve Organizasyon Şeması</a>
@@ -69,6 +79,7 @@
             <a href="calisma-gruplari.html" data-tr="Çalışma Grupları" data-en="Working Groups" role="menuitem">Çalışma Grupları</a>
           </div>
         </li>
+
         <li><a href="haberler.html" data-tr="Haberler" data-en="News">Haberler</a></li>
         <li><a href="galeri.html" data-tr="Galeri" data-en="Gallery">Galeri</a></li>
         <li><a href="linkler.html" data-tr="Linkler" data-en="Links">Linkler</a></li>
@@ -176,11 +187,53 @@
     function setNav(open){
       nav.classList.toggle('show', open);
       hamburger.setAttribute('aria-expanded', String(open));
+      if (!open) {
+        // Hamburger kapanınca açık dropdownları kapat
+        document.querySelectorAll('.dropdown.open').forEach(d => {
+          const link = d.querySelector('.dropdown-toggle');
+          d.classList.remove('open');
+          if (link) link.setAttribute('aria-expanded', 'false');
+        });
+      }
     }
     hamburger.addEventListener('click', ()=> setNav(!nav.classList.contains('show')));
+
     // Menü dışına tıklayınca kapat
     document.addEventListener('click', (e) => {
       if (!nav.contains(e.target) && nav.classList.contains('show')) setNav(false);
+    });
+
+    // Mobilde dropdown aç/kapa (hamburger açıkken çalışır)
+    document.querySelectorAll('.dropdown > .dropdown-toggle').forEach(toggle => {
+      toggle.addEventListener('click', function(e) {
+        // Sadece mobilde (hamburger menü açıkken) varsayılan davranışı engelle
+        const isMobileNavOpen = nav.classList.contains('show');
+        if (isMobileNavOpen) {
+          e.preventDefault();
+          const parent = this.parentElement;
+          const nowOpen = !parent.classList.contains('open');
+
+          // Diğer açık dropdownları kapat
+          document.querySelectorAll('.dropdown.open').forEach(d => {
+            if (d !== parent) {
+              d.classList.remove('open');
+              const l = d.querySelector('.dropdown-toggle');
+              if (l) l.setAttribute('aria-expanded', 'false');
+            }
+          });
+
+          // Bu menüyü toggle et
+          parent.classList.toggle('open', nowOpen);
+          this.setAttribute('aria-expanded', String(nowOpen));
+        }
+      });
+    });
+
+    // Alt menüde bir linke tıklanınca mobilde menüyü kapat
+    document.querySelectorAll('.dropdown-menu a').forEach(a => {
+      a.addEventListener('click', () => {
+        if (nav.classList.contains('show')) setNav(false);
+      });
     });
 
     /* ============== Weather (with timeout) ============== */
@@ -224,7 +277,6 @@
           sicaklikEl.innerHTML = `<img src="${iconUrl}" alt="" width="64" height="64" /> <span>${sicaklik}°C</span>`;
           aciklamaEl.textContent = desc;
 
-          // Skins
           const isNight = icon.includes('n');
           blok.classList.remove('hava-durumu-gunduz','hava-durumu-gece','hava-durumu-acik','hava-durumu-bulutlu','hava-durumu-yagmurlu','hava-durumu-karlı');
           blok.classList.add(isNight ? 'hava-durumu-gece' : 'hava-durumu-gunduz');
