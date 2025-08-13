@@ -1,128 +1,358 @@
 <!DOCTYPE html>
 <html lang="tr">
-
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
   <title>HAVAMET | Galeri</title>
+
+  <!-- SEO -->
+  <meta name="description" content="HAVAMET’in etkinliklerinden kareler: fotoğraf galerisi.">
+  <meta name="theme-color" content="#1c2c48">
+  <meta property="og:title" content="HAVAMET | Galeri">
+  <meta property="og:description" content="HAVAMET’in etkinliklerinden kareler: fotoğraf galerisi.">
+  <meta property="og:type" content="website">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    crossorigin="anonymous" referrerpolicy="no-referrer">
+
+  <!-- Styles -->
   <link rel="stylesheet" href="style.css" />
 </head>
 
 <body>
+  <a class="sr-only" href="#icerik">İçeriğe atla</a>
+
+  <!-- Üstte dil & tema kontrolleri -->
   <div class="top-bar">
-    <div class="hamburger" onclick="toggleMenu()">☰</div>
     <div class="right-controls">
-      <div class="lang-switcher">
-        <button onclick="setLanguage('tr')" title="Türkçe">
-          <img src="assets/flags/tr.png" alt="TR" width="24" />
+      <div class="lang-switcher" role="group" aria-label="Dil seçimi">
+        <button onclick="setLanguage('tr')" title="Türkçe" aria-label="Türkçe">
+          <img src="assets/flags/tr.png" alt="TR bayrak" width="24" height="24" loading="lazy" />
         </button>
-        <button onclick="setLanguage('en')" title="English">
-          <img src="assets/flags/gb.png" alt="EN" width="24" />
+        <button onclick="setLanguage('en')" title="English" aria-label="English">
+          <img src="assets/flags/gb.png" alt="GB flag" width="24" height="24" loading="lazy" />
         </button>
       </div>
       <div class="mode-toggle">
-        <button id="modeButton" onclick="toggleMode()" title="Tema Değiştir">🌙</button>
+        <button id="modeButton" onclick="toggleMode()" title="Tema Değiştir" aria-pressed="false" aria-label="Tema değiştir">🌙</button>
       </div>
     </div>
   </div>
 
+  <!-- Kapak / Hero -->
   <header class="kapak">
-    <img src="assets/images/kapak.png" alt="Kapak Görseli" class="kapak-gorsel" />
-    <div class="kapak-icerik">
-      <img src="assets/images/logo.png" alt="HAVAMET Logo" class="logo" />
+    <img src="assets/images/kapak.png" alt="Arka plan" class="kapak-gorsel" loading="eager" />
+    <div class="container kapak-icerik">
+      <img src="assets/images/logo.png" alt="HAVAMET Logo" class="logo" width="240" height="auto" />
     </div>
   </header>
 
-  <nav id="navMenu">
-    <ul class="menu">
-      <li><a href="index.html" data-tr="Anasayfa" data-en="Home">Anasayfa</a></li>
-      <li class="dropdown">
-        <a href="#" data-tr="Derneğimiz" data-en="Our Association">Derneğimiz</a>
-        <ul class="dropdown-menu">
-          <li><a href="tarihce.html" data-tr="Tarihçe" data-en="History">Tarihçe</a></li>
-          <li><a href="misyon-vizyon.html" data-tr="Misyon & Vizyon" data-en="Mission & Vision">Misyon & Vizyon</a></li>
-          <li><a href="yonetim.html" data-tr="Yönetim ve Organizasyon Şeması" data-en="Management and Organization Chart">Yönetim ve Organizasyon Şeması</a></li>
-          <li><a href="tuzuk.html" data-tr="Tüzük" data-en="Regulation">Tüzük</a></li>
-          <li><a href="faaliyet.html" data-tr="Faaliyet Raporları" data-en="Activity Reports">Faaliyet Raporları</a></li>
-          <li><a href="subeler.html" data-tr="Şubelerimiz" data-en="Our Branches">Şubelerimiz</a></li>
-          <li><a href="calisma-gruplari.html" data-tr="Çalışma Grupları" data-en="Working Groups">Çalışma Grupları</a></li>
-        </ul>
-      </li>
-      <li><a href="haberler.html" data-tr="Haberler" data-en="News">Haberler</a></li>
-      <li><a href="galeri.html" data-tr="Galeri" data-en="Gallery">Galeri</a></li>
-      <li><a href="linkler.html" data-tr="Linkler" data-en="Links">Linkler</a></li>
-      <li><a href="iletisim.html" data-tr="İletişim" data-en="Contact">İletişim</a></li>
-    </ul>
+  <!-- NAV -->
+  <nav id="nav" role="navigation" aria-label="Ana menü">
+    <div class="container inner">
+      <a href="index.html" class="brand" aria-label="HAVAMET ana sayfa">
+        <img src="assets/images/logo.png" alt="" width="32" height="32" loading="lazy" />
+        <span>HAVAMET</span>
+      </a>
+      <button class="hamburger" id="hamburger" aria-expanded="false" aria-controls="menu" aria-label="Menüyü aç/kapat">☰</button>
+      <ul class="menu" id="menu">
+        <li><a href="index.html" data-tr="Anasayfa" data-en="Home">Anasayfa</a></li>
+
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle"
+             data-tr="Derneğimiz" data-en="Our Association"
+             aria-haspopup="true" aria-expanded="false" aria-controls="submenu-dernegimiz">
+             Derneğimiz
+          </a>
+          <div class="dropdown-menu" id="submenu-dernegimiz" role="menu" aria-label="Derneğimiz alt menü">
+            <a href="tarihce.html" data-tr="Tarihçe" data-en="History" role="menuitem">Tarihçe</a>
+            <a href="misyon-vizyon.html" data-tr="Misyon & Vizyon" data-en="Mission & Vision" role="menuitem">Misyon & Vizyon</a>
+            <a href="yonetim.html" data-tr="Yönetim ve Organizasyon Şeması" data-en="Management and Organization Chart" role="menuitem">Yönetim ve Organizasyon Şeması</a>
+            <a href="tuzuk.html" data-tr="Tüzük" data-en="Regulation" role="menuitem">Tüzük</a>
+            <a href="faaliyet.html" data-tr="Faaliyet Raporları" data-en="Activity Reports" role="menuitem">Faaliyet Raporları</a>
+            <a href="subeler.html" data-tr="Şubelerimiz" data-en="Our Branches" role="menuitem">Şubelerimiz</a>
+            <a href="calisma-gruplari.html" data-tr="Çalışma Grupları" data-en="Working Groups" role="menuitem">Çalışma Grupları</a>
+          </div>
+        </li>
+
+        <li><a href="haberler.html" data-tr="Haberler" data-en="News">Haberler</a></li>
+        <li><a href="galeri.html" data-tr="Galeri" data-en="Gallery" aria-current="page">Galeri</a></li>
+        <li><a href="linkler.html" data-tr="Linkler" data-en="Links">Linkler</a></li>
+        <li><a href="iletisim.html" data-tr="İletişim" data-en="Contact">İletişim</a></li>
+      </ul>
+    </div>
   </nav>
 
-  <main class="main-container">
-    <div class="content-left">
-      <section class="hero">
-        <h2 data-tr="Fotoğraf Galerisi" data-en="Photo Gallery">Fotoğraf Galerisi</h2>
-        <p data-tr="Derneğimizin etkinliklerinden ve faaliyetlerinden kareler." data-en="Snapshots from our events and activities.">
-          Derneğimizin etkinliklerinden ve faaliyetlerinden kareler.
-        </p>
-        <div class="galeri-grid">
-          <div class="galeri-kutu">
-            <img src="assets/images/mgm.png" alt="Etkinlik 1" />
-            <div class="galeri-tarih" data-tr="MGM Ziyareti" data-en="Visit to MGM">MGM Ziyareti</div>
-          </div>
-          <div class="galeri-kutu">
-            <img src="assets/images/event1.jpg" alt="Etkinlik 2" />
-            <div class="galeri-tarih" data-tr="Açılış Töreni" data-en="Opening Ceremony">Açılış Töreni</div>
-          </div>
-          <div class="galeri-kutu">
-            <img src="assets/images/event2.jpg" alt="Etkinlik 3" />
-            <div class="galeri-tarih" data-tr="Seminer 2025" data-en="Seminar 2025">Seminer 2025</div>
-          </div>
-        </div>
-        <p style="margin-top:1rem;"><a href="#" class="tum-galeriler" data-tr="Daha fazla görsel yakında..." data-en="More photos coming soon...">Daha fazla görsel yakında...</a></p>
-      </section>
-    </div>
+  <!-- MAIN -->
+  <main id="icerik" class="container">
+    <section class="grid grid-cols-2">
+      <div class="stack-24">
 
-    <aside class="content-right">
-      <!-- Sağ panel istenirse -->
-    </aside>
+        <!-- Sayfa başlığı/hero -->
+        <section class="hero card" aria-labelledby="hero-title">
+          <h2 id="hero-title" data-tr="Fotoğraf Galerisi" data-en="Photo Gallery">Fotoğraf Galerisi</h2>
+          <p data-tr="Derneğimizin etkinliklerinden ve faaliyetlerinden kareler."
+             data-en="Snapshots from our events and activities.">
+             Derneğimizin etkinliklerinden ve faaliyetlerinden kareler.
+          </p>
+        </section>
+
+        <!-- Galeri -->
+        <section class="card" aria-labelledby="gallery-title">
+          <h3 id="gallery-title" data-tr="Son Eklenenler" data-en="Latest Photos">Son Eklenenler</h3>
+
+          <div class="galeri-grid">
+            <figure class="galeri-kutu">
+              <img src="assets/images/mgm.png" alt="Meteoroloji Genel Müdürlüğü ziyareti" loading="lazy" />
+              <figcaption class="galeri-tarih" data-tr="Toplantı" data-en="meeting">Toplantı</figcaption>
+            </figure>
+
+            <figure class="galeri-kutu">
+              <img src="assets/images/event1.jpg" alt="6saat 39 dakika süren toplantımız." loading="lazy" />
+              <figcaption class="galeri-tarih" data-tr="6saat 39 dakika süren toplantımız." data-en="6h39m meeting">Açılış Töreni</figcaption>
+            </figure>
+
+            <figure class="galeri-kutu">
+              <img src="assets/images/event2.jpg" alt="2025 seminer etkinliğinden görüntü" loading="lazy" />
+              <figcaption class="galeri-tarih" data-tr="MGM" data-en="MGM">Seminer 2025</figcaption>
+            </figure>
+          </div>
+
+          <p style="margin-top:1rem;">
+            <span class="tag" data-tr="Daha fazla görsel yakında..." data-en="More photos coming soon...">Daha fazla görsel yakında...</span>
+          </p>
+        </section>
+
+      </div>
+
+      <aside class="stack-24" aria-label="Yan içerik">
+        <section class="hava-durumu-blok card" aria-labelledby="weather-title" aria-live="polite" role="status">
+          <h3 id="weather-title" data-tr="Hava Durumu" data-en="Weather">Hava Durumu</h3>
+          <div id="konum">Konum alınıyor...</div>
+          <div id="sicaklik" class="big"></div>
+          <div id="aciklama"></div>
+        </section>
+
+        <section class="takvim card" aria-labelledby="events-title">
+          <h3 id="events-title" data-tr="Etkinliklerimiz" data-en="Our Events">Etkinliklerimiz</h3>
+          <iframe
+            title="Takvim"
+            src="https://calendar.google.com/calendar/embed?src=tr.turkish%23holiday%40group.v.calendar.google.com&ctz=Europe%2FIstanbul"
+            style="border:0" width="100%" height="220" frameborder="0" scrolling="no"></iframe>
+        </section>
+
+        <section class="galeri card" aria-labelledby="mini-gallery-title">
+          <h3 id="mini-gallery-title" data-tr="GALERİ" data-en="GALLERY">GALERİ</h3>
+          <div class="galeri-kutu">
+            <img src="assets/images/mgm.png" alt="Meteoroloji Genel Müdürlüğü" loading="lazy" />
+            <div class="galeri-tarih">Meteoroloji Genel Müdürlüğü</div>
+          </div>
+          <a href="galeri.html" class="tum-galeriler" data-tr="Tüm Galeriler" data-en="All Galleries">Tüm Galeriler</a>
+        </section>
+      </aside>
+    </section>
   </main>
 
-  <footer>
-    <p>&copy; 2025 HAVAMET - Tüm hakları saklıdır.</p>
+  <footer role="contentinfo">
+    <div class="container">
+      <p>&copy; 2025 HAVAMET — Tüm hakları saklıdır.</p>
+
+      <div class="social-footer" aria-label="Sosyal medya bağlantıları">
+        <a href="https://twitter.com/havamet" class="social-btn tw" target="_blank" rel="noopener" aria-label="X (Twitter)">
+          <i class="fa-brands fa-x-twitter" aria-hidden="true"></i>
+        </a>
+        <a href="https://www.instagram.com/havametcad?igsh=ZzA3bzh1ZTNxZzQw" class="social-btn ig" target="_blank" rel="noopener" aria-label="Instagram">
+          <i class="fa-brands fa-instagram" aria-hidden="true"></i>
+        </a>
+        <a href="https://www.facebook.com/profile.php?id=61579499541781" class="social-btn fb" target="_blank" rel="noopener" aria-label="Facebook">
+          <i class="fa-brands fa-facebook-f" aria-hidden="true"></i>
+        </a>
+      </div>
+    </div>
   </footer>
 
   <script>
+  document.addEventListener('DOMContentLoaded', () => {
+    /* ============== Language ============== */
     function setLanguage(lang) {
-      const elements = document.querySelectorAll('[data-tr], [data-en]');
-      elements.forEach(el => {
+      const els = document.querySelectorAll('[data-tr], [data-en]');
+      els.forEach(el => {
         const text = el.getAttribute(`data-${lang}`);
         if (text) el.textContent = text;
       });
       localStorage.setItem('lang', lang);
     }
+    window.setLanguage = setLanguage; // buton onclick için
 
-    function toggleMode() {
+    /* ============== Theme ============== */
+    function applyTheme(isDark){
       const body = document.body;
-      const button = document.getElementById("modeButton");
-      body.classList.toggle('dark-mode');
-      const isDark = body.classList.contains('dark-mode');
-      localStorage.setItem('theme', isDark ? 'dark' : 'light');
-      button.textContent = isDark ? '🌙' : '🌞';
-    }
-
-    function toggleMenu() {
-      const nav = document.getElementById("navMenu");
-      nav.classList.toggle("show");
-    }
-
-    window.onload = () => {
-      const lang = localStorage.getItem('lang') || 'tr';
-      setLanguage(lang);
-      const savedTheme = localStorage.getItem('theme');
-      if (savedTheme === 'dark') {
-        document.body.classList.add('dark-mode');
-        document.getElementById("modeButton").textContent = '🌞';
+      const btn = document.getElementById('modeButton');
+      body.classList.toggle('dark-mode', isDark);
+      if (btn) {
+        btn.textContent = isDark ? '🌞' : '🌙';
+        btn.setAttribute('aria-pressed', String(isDark));
       }
-    };
+      localStorage.setItem('theme', isDark ? 'dark' : 'light');
+    }
+    function toggleMode(){ applyTheme(!document.body.classList.contains('dark-mode')); }
+    window.toggleMode = toggleMode; // buton onclick için
+
+    /* ============== Nav (Responsive) ============== */
+    const nav = document.getElementById('nav');
+    const hamburger = document.getElementById('hamburger');
+
+    function closeAllDropdowns() {
+      document.querySelectorAll('.dropdown.open').forEach(d => {
+        d.classList.remove('open');
+        const link = d.querySelector('.dropdown-toggle');
+        if (link) link.setAttribute('aria-expanded', 'false');
+      });
+    }
+
+    function setNav(open){
+      if (!nav) return;
+      nav.classList.toggle('show', open);
+      if (hamburger) hamburger.setAttribute('aria-expanded', String(open));
+      if (!open) closeAllDropdowns();
+    }
+
+    if (hamburger) {
+      hamburger.addEventListener('click', (e)=> {
+        e.preventDefault();
+        setNav(!nav.classList.contains('show'));
+      });
+    }
+
+    // Menü dışına tıklayınca kapat
+    document.addEventListener('click', (e) => {
+      if (!nav) return;
+      if (!nav.contains(e.target) && nav.classList.contains('show')) setNav(false);
+    });
+
+    // Resize’da (desktop’a geçişte) sıfırla
+    window.addEventListener('resize', () => {
+      if (window.innerWidth >= 1024) {
+        setNav(false);
+      }
+    });
+
+    // Mobilde dropdown aç/kapa
+    if (nav) {
+      nav.addEventListener('click', function(e){
+        const toggle = e.target.closest('.dropdown > .dropdown-toggle');
+        if (!toggle) return;
+
+        const isMobileNavOpen = nav.classList.contains('show');
+        if (isMobileNavOpen) {
+          e.preventDefault();
+
+          const parent = toggle.parentElement;
+          const nowOpen = !parent.classList.contains('open');
+
+          // Diğer açık dropdown’ları kapat
+          document.querySelectorAll('.dropdown.open').forEach(d => {
+            if (d !== parent) {
+              d.classList.remove('open');
+              const l = d.querySelector('.dropdown-toggle');
+              if (l) l.setAttribute('aria-expanded', 'false');
+            }
+          });
+
+          parent.classList.toggle('open', nowOpen);
+          toggle.setAttribute('aria-expanded', String(nowOpen));
+        }
+      });
+    }
+
+    // Alt menü linkine tıklanınca (mobilde) menüyü kapat
+    document.querySelectorAll('.dropdown-menu a').forEach(a => {
+      a.addEventListener('click', () => {
+        if (nav && nav.classList.contains('show')) setNav(false);
+      });
+    });
+
+    /* ============== Weather (with timeout) ============== */
+    async function havaDurumuKonumaGore() {
+      const API_KEY = "e217a53c2bdc462f5d5ff0d71e5a124e";
+      const konumEl = document.getElementById("konum");
+      const sicaklikEl = document.getElementById("sicaklik");
+      const aciklamaEl = document.getElementById("aciklama");
+      const blok = document.querySelector('.hava-durumu-blok');
+
+      if (!navigator.geolocation) {
+        if (konumEl) konumEl.textContent = "Konum desteklenmiyor.";
+        return;
+      }
+
+      if (konumEl) konumEl.textContent = "Konum alınıyor...";
+
+      navigator.geolocation.getCurrentPosition(async (pos) => {
+        const lat = pos.coords.latitude;
+        const lon = pos.coords.longitude;
+
+        const ctrl = new AbortController();
+        const timeout = setTimeout(() => ctrl.abort(), 7000); // 7 sn timeout
+
+        const url = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${API_KEY}&units=metric&lang=tr`;
+
+        try {
+          const resp = await fetch(url, { signal: ctrl.signal });
+          clearTimeout(timeout);
+          if (!resp.ok) throw new Error("Ağ hatası");
+          const data = await resp.json();
+
+          const sehir = data.name || "Konum";
+          const sicaklik = Math.round(data.main?.temp ?? 0);
+          const desc = (data.weather?.[0]?.description || "").toString();
+          const main = (data.weather?.[0]?.main || "").toLowerCase();
+          const icon = data.weather?.[0]?.icon || "01d";
+          const iconUrl = `https://openweathermap.org/img/wn/${icon}@2x.png`;
+
+          if (konumEl) konumEl.textContent = `📍 ${sehir}`;
+          if (sicaklikEl) sicaklikEl.innerHTML = `<img src="${iconUrl}" alt="" width="64" height="64" /> <span>${sicaklik}°C</span>`;
+          if (aciklamaEl) aciklamaEl.textContent = desc;
+
+          const isNight = icon.includes('n');
+          if (blok) {
+            blok.classList.remove('hava-durumu-gunduz','hava-durumu-gece','hava-durumu-acik','hava-durumu-bulutlu','hava-durumu-yagmurlu','hava-durumu-karlı');
+            blok.classList.add(isNight ? 'hava-durumu-gece' : 'hava-durumu-gunduz');
+
+            if (main.includes('clear')) blok.classList.add('hava-durumu-acik');
+            else if (main.includes('cloud')) blok.classList.add('hava-durumu-bulutlu');
+            else if (main.includes('rain') || main.includes('drizzle')) blok.classList.add('hava-durumu-yagmurlu');
+            else if (main.includes('snow')) blok.classList.add('hava-durumu-karlı');
+          }
+
+        } catch (err) {
+          if (konumEl) konumEl.textContent = "Hava durumu alınamadı.";
+          if (sicaklikEl) sicaklikEl.textContent = "";
+          if (aciklamaEl) aciklamaEl.textContent = "";
+        }
+      }, () => {
+        if (konumEl) konumEl.textContent = "Konum alınamadı.";
+      }, { timeout: 8000 });
+    }
+
+    /* ============== Init ============== */
+    // Dil
+    const lang = localStorage.getItem('lang') || 'tr';
+    setLanguage(lang);
+
+    // Tema (kayıtlı yoksa sistem tercihine saygı)
+    const savedTheme = localStorage.getItem('theme');
+    const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+    applyTheme(savedTheme ? savedTheme === 'dark' : prefersDark);
+
+    // Hava durumu
+    havaDurumuKonumaGore();
+  });
   </script>
 </body>
-
 </html>
